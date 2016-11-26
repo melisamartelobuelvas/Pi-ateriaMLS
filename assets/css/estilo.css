@@ -1,0 +1,304 @@
+*{
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+body{
+	margin: 0px;
+	font-size: 14px;
+	font-family: helvetica,verdana,arial;
+}
+
+header{
+	width: 100%;
+	background-color: #37d8d8;
+	padding: 5px;
+}
+
+header nav{
+	display: flex;
+    flex-direction: row;
+}
+
+header nav div.logo{
+	width: 100%;
+	align-items: stretch;
+}
+
+header nav div.logo img{
+	width: 120px;
+	height: auto;
+}
+
+header nav div.navegacion{
+	align-items: flex-start;
+}
+
+header nav div.navegacion ul{
+	margin: 10px 20px 0px 0px;
+	padding: 0px;
+	display: flex;
+    flex-direction: row;
+}
+
+header nav div.navegacion ul li{
+	padding: 3px;
+	display: inline;
+	align-items: flex-start;
+}
+
+header nav div.navegacion ul li a{
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+section.carrusel{
+	padding: 10px;
+}
+
+div.carousel-inner div.item.active img,div.carousel-inner div.item img{
+	margin: 0 auto;
+}
+
+#myCarousel a.carousel-control.left, #myCarousel a.carousel-control.right{
+	background-image: linear-gradient(to right,rgba(255, 255, 255, 0) 0,rgba(0,0,0,.0001) 100%);
+}
+
+div.lateral{
+	width: 30%;
+        height: 600px;
+        overflow: auto;
+	float: right;
+        border-left: 1px solid #ddd;
+	background-color: #ddd;
+	box-sizing: border-box;
+        -moz-box-sizing: border-box;
+}
+
+div.lateralp{
+	width: 70%;
+	float: left;
+	padding: 5px;
+	background-color: #fff;
+	box-sizing: border-box;
+        -moz-box-sizing: border-box;
+}
+div.lateralp div.login{
+	margin: 30px;
+}
+
+div.lateralp div.login table tbody tr td.imagen{
+    width: 7px;
+    height: auto;
+    padding: 2px;
+}
+
+div.lateralp div.login table tbody tr td.imagen img{
+    width: 100%;
+    height: auto;
+}
+
+div.lateralp input{
+	width: 100%;
+	padding: 2px;
+	font-size: 16px;
+	height: 32px;
+	margin: 5px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+
+div.lateralp div.agg{
+    display: flex;
+    align-items: center;
+}
+
+div.lateralp div.agg input[type=number]{
+    width: 100px;
+}
+
+div.lateralp div.agg a{
+   padding: 5px;
+   border-radius: 5px;
+   color: #fff;
+   background-color: #37d8d8;
+}
+
+div.lateralp input:hover{
+	border: 1px solid #ddd;
+	webkit-box-shadow: inset 0 1px 2px rgba(255, 255, 255,0.1);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+div.lateralp input[type=submit]{
+	color: #fff;
+	font-weight: bold;
+	background-color: #37d8d8;
+}
+
+div.lateralp input[type=submit]:hover{
+	background-color: #16d0d0;
+}
+
+form input.error,form input.error:hover{
+    background-color: #ffcccc !important;
+    border: 2px solid #bb8d8d !important;
+    -webkit-box-shadow: 0 0 0px 1000px #ffcccc inset;
+}
+
+div#modal-eliminar,div#modal-agg{
+	margin: 0 auto;
+	top: 15%;
+	width: 95%;
+  	max-width: 560px;
+	overflow-y: auto;
+	background-color: #fff;
+	bottom: inherit;
+}
+
+div#modal-eliminar .modal-header,div#modal-agg .modal-header{
+	background-color: #efefef;
+}
+
+div#modal-eliminar .modal-footer,div#modal-agg .modal-footer{
+	background-color: #f5f5f5;
+}
+
+div.login form.buscar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding-top: 5px;
+    border-radius: 0px;
+}
+
+div.login form.buscar input[type=text],select{
+    align-items: stretch;
+    margin: 0px;
+    width: 100%;
+}
+
+div.login form.buscar select{
+    padding-top: 5px;
+}
+
+div.login form.buscar input[type=submit]{
+    align-items: flex-start;
+    width: 100px;
+    margin: 0px 0px 0px 10px;
+}
+
+form input.rojo,form input.rojo:-webkit-autofill{
+    background-color: #ffcccc !important;
+    border: 2px solid #bb8d8d !important;
+    -webkit-box-shadow: 0 0 0px 1000px #ffcccc inset;
+}
+
+table thead tr th.sin-borde-abajo{
+	border-bottom-width: 0px;
+}
+
+thead.color{
+	background-color: #f5f5f5;
+}
+
+a.btn{
+	padding: 4px 12px;
+}
+
+a.btnd{
+	color: #000;
+	background-color: #eee;
+	border: 1px solid #eee;
+}
+
+a.btnd:hover{
+	background-color: #e5e5e5;
+	border: 1px solid #eee;
+}
+
+table tbody tr:hover{
+	background-color: #fafafa;
+}
+
+div.veruser{
+    width: 90%;
+    margin: 0 auto;
+}
+
+div.veruser div.head{
+    height: 72px;
+    margin: 10px 0px 0px 0px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    color: white;
+    background-color: #37d8d8;
+}
+
+div.veruser div.head h4,div.veruser div.head img{
+    width: auto;
+    display: inline;
+}
+
+div.veruser div.head h4{
+    float: left;
+    margin-top: 20px;
+}
+
+div.veruser div.head img{
+    width: 60px;
+    height: auto;
+    margin-right: 2px;
+    border-radius: 3px;
+    float: right;
+}
+
+div.producto{
+    width: 100%;
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+div.producto div.a{
+    width: 70%;
+    padding: 10px;
+    border-left: 15px solid #37d8d8;
+    border-bottom: 1px solid #37d8d8;
+}
+
+div.producto div.b{
+    width: 30%;
+}
+
+div.producto div.b img{
+    width: 80%;
+    height: auto;
+}
+
+div.navegacion ul li a{
+    border-right: 1px solid #fff;
+    padding-right: 5px;
+}
+
+
+@media screen and (max-width: 850px) {
+    div.lateral{
+        display: none;
+    }
+    div.lateralp{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+	section.carrusel{
+		padding: 5px 2px;
+	}
+}
