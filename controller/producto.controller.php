@@ -53,7 +53,6 @@ class ProductoController{
                         'descripcion' => $_REQUEST['descripcion'], 
                         'ruta' => $fichero_subido
                         );
-                    $this->ActualizarJSON();
                    $this->model->Registrar($datos);
                 } else {
                     echo "¡Posible ataque de subida de ficheros!\n";
@@ -64,7 +63,6 @@ class ProductoController{
                         'cantidad' => $_REQUEST['cantidad'],
                         'descripcion' => $_REQUEST['descripcion']
                         );
-                    $this->ActualizarJSON();
                     $this->model->Actualizar($datos,$_REQUEST['id']);
             }  else {
                 echo "Debe subir una imagen";
@@ -79,7 +77,6 @@ class ProductoController{
     
     public function Eliminar(){
         $this->model->Eliminar($_REQUEST['id']);
-        $this->ActualizarJSON();
         header('Location: /producto/');
     }
     
@@ -109,21 +106,35 @@ class ProductoController{
         //header('Location: /producto/carrito/');
     }
     
-    public function ActualizarJSON(){
-        $dato = $this->model->Listar();
-        //header('Content-type: application/json; charset=utf-8');
-        $json_string = json_encode($dato);
-        $file = 'assets/json/productos.json';
-        file_put_contents($file, $json_string);
+    public function Json(){
+        $obj = $this->model->Otra("Select id,nombre,cantidad,preciodeventa,descripcion from producto");
+        $dato=[];
+        foreach ($_GET as $key => $value) {
+            if($key=="controlador" || $key=="accion"){
+                continue;
+            }  else {
+                foreach ($obj as $value_) {
+                    if($value_->$key==$value){
+                        array_push($dato, $value_);
+                    }
+                }
+                $obj=$dato;
+                $dato=[];
+            }
+        }
+        header('Content-type: application/json');
+        echo $dato = json_encode($obj);
     }
     
     public function Buscar(){
-
         $dato = $this->model->Buscar(['nombre','descripcion'],$_REQUEST['buscar']);
-
         require_once 'view/header.php';
         require_once 'view/lateral.php';
         require_once 'view/producto/listar.php';
         require_once 'view/footer.php';
+    }
+    
+    public function hola(){
+        echo "hola";
     }
 }

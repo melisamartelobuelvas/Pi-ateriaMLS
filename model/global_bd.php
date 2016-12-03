@@ -155,4 +155,20 @@ class global_bd
                 die($e->getMessage());
             }
 	}
+        
+        public function Otra($consulta)
+	{
+		try
+		{
+
+			$stm = $this->pdo->prepare($consulta);
+			$stm->execute();
+
+			return $stm->fetchAll(PDO::FETCH_OBJ);
+		}
+		catch(Exception $e)
+		{
+			die($e->getMessage());
+		}
+	}
 }

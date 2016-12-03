@@ -9,7 +9,7 @@ if(!isset($_REQUEST['controlador']))
     require_once "controller/$controller.controller.php";
     $controller = ucwords($controller) . 'Controller';
     $controller = new $controller;
-    $controller->Index();    
+    $controller->Index(); 
 }
 else
 {

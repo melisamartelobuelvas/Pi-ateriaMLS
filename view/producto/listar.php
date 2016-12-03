@@ -35,6 +35,7 @@
                 ."</div>";
         } 
     ?>
+    <a href="/producto/json/">Importar</a>
 </div>
 <?php if(isset($_SESSION['rol']) && $_SESSION['rol']=='administrador'): ?>
 <div id="modal-eliminar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

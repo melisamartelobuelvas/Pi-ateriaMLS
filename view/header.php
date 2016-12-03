@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/assets/css/login.css">
         <link rel="stylesheet" href="/assets/css/estilo.css">
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
