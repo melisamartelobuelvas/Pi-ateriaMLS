@@ -13,28 +13,20 @@
     <?php endif; ?>
     <div class="login">
         <div class="head">
-            <h4>Aliados</h4>
+            <h4>Combustible</h4>
         </div>
-        <!--form action="/aliados/buscar/" method="post" class='buscar'>
-                <select name="regimen">
-                    <option value="">Todos</option>
-                    <option value="COMUN">Comun</option>
-                    <option value="SIMPLIFICADO">Simplificado</option>
-                </select>
-                <input type="submit" value="Buscar">
-        </form-->
-        <h5>Comparar aliados</h5>
+        <h5>Comparar precios</h5>
         <form action="/aliados/comparar/" method="post" class='buscar'>
                 <select name="aliado1">
                     <option value="">Aliando...</option>
                     <?php foreach($dato as $r): ?>
-                        <option value="<?php echo $r->hotel ?>"><?php echo $r->hotel ?></option>
+                        <option value="<?php echo $r->nombrecomercial ?>"><?php echo $r->nombrecomercial ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="aliado2">
                     <option value="">Aliando...</option>
                     <?php foreach($dato as $r): ?>
-                        <option value="<?php echo $r->hotel ?>"><?php echo $r->hotel ?></option>
+                        <option value="<?php echo $r->nombrecomercial ?>"><?php echo $r->nombrecomercial ?></option>
                     <?php endforeach; ?>
                 </select>
                 <input type="submit" value="Buscar">
@@ -43,19 +35,22 @@
             <thead class="color">
                 <tr>
                     <th class="sin-borde-abajo">Nombre</th>
-                    <th class="sin-borde-abajo">Habitaciones</th>
-                    <th class="sin-borde-abajo">Camas</th>
-                    <th class="sin-borde-abajo">Empleados</th>
+                    <th class="sin-borde-abajo">Marca</th>
+                    <th class="sin-borde-abajo">Producto</th>
+                    <th class="sin-borde-abajo">Precio</th>
+                    <th class="sin-borde-abajo">Direccion</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php foreach($dato as $r): ?>
                     <tr>
-                            <td><?php echo $r->hotel ?></td>
-                            <td><?php echo $r->hab ?></td>
-                            <td><?php echo $r->camas ?></td>	
-                            <td><?php echo $r->emp ?></td>
+                            <td><?php echo $r->nombrecomercial ?></td>
+                            <td><?php echo $r->bandera ?></td>
+                            <td><?php echo $r->producto ?></td>	
+                            <td><?php echo $r->precio ?></td>
+                            <td><?php echo $r->direccion ?></td>
+                    </tr>
                     </tr>
                 <?php endforeach; ?>
                 <?php
