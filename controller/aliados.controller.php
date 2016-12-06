@@ -6,27 +6,40 @@ class AliadosController{
     public function __CONSTRUCT(){
     }
     
+    private function http_get_contents($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_TIMEOUT, 1);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        if(FALSE === ($retval = curl_exec($ch))) {
+            echo curl_error($ch);
+        } else {
+            return $retval;
+        }
+    }
+    
     public function Index(){
-        $json = file_get_contents('https://www.datos.gov.co/resource/3a4x-4hwu.json');
+        $json = $this->http_get_contents('http://mediven.esy.es/vista/lista_json.php');
         $dato = json_decode($json);
         require_once 'view/header.php';
         require_once 'view/lateral.php';
         require_once 'view/aliados/listar.php';
         require_once 'view/footer.php';
     }
-
-    
+        
     public function Comparar(){
-        $json = file_get_contents('https://www.datos.gov.co/resource/3a4x-4hwu.json');
+        $json = $this->http_get_contents('http://mediven.esy.es/vista/lista_json.php');
         $dato = json_decode($json);
         
-        $json = file_get_contents('https://www.datos.gov.co/resource/3a4x-4hwu.json?nombrecomercial='.str_replace(" ","+",$_REQUEST['aliado1']));
+        $json = $this->http_get_contents('http://mediven.esy.es/vista/lista_json.php?idmedi='.$_REQUEST['aliado1']);
         $aliado1=json_decode($json);
-        $json = file_get_contents('https://www.datos.gov.co/resource/3a4x-4hwu.json?nombrecomercial='.str_replace(" ","+",$_REQUEST['aliado2']));
+        $json = $this->http_get_contents('http://mediven.esy.es/vista/lista_json.php?idmedi='.$_REQUEST['aliado2']);
         $aliado2=json_decode($json);
-        $grafic1="[['".$_REQUEST['aliado1']."',".$aliado1[0]->precio."],['".$_REQUEST['aliado2']."',".$aliado2[0]->precio."]]";
-        //$grafic2="[['".$_REQUEST['aliado1']."',".$aliado1[0]->camas."],['".$_REQUEST['aliado2']."',".$aliado2[0]->camas."]]";
-        //$grafic3="[['".$_REQUEST['aliado1']."',".$aliado1[0]->emp."],['".$_REQUEST['aliado2']."',".$aliado2[0]->emp."]]";
+        
+        $grafic1="[['".$aliado1[0]->nombre."',".$aliado1[0]->unidades."],['".$aliado2[0]->nombre."',".$aliado2[0]->unidades."]]";
+        //$grafic2="[['".$_REQUEST['aliado1']."',".$aliado1[0]->PesoCanal."],['".$_REQUEST['aliado2']."',".$aliado2[0]->PesoCanal."]]";
+        //$grafic3="[['".$_REQUEST['aliado1']."',".$aliado1[0]->Pesopiel."],['".$_REQUEST['aliado2']."',".$aliado2[0]->Pesopiel."]]";
         
         //echo $grafic;
         
@@ -45,9 +58,9 @@ class AliadosController{
         function drawChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
+            data.addColumn('number', 'Unidades');
             data.addRows(".$grafic1.");
-            var options = {'title':'Precio del combustible','width':640,'height':480};
+            var options = {'title':'Comparacion de unidades','width':640,'height':480};
             var chart = new google.visualization.ColumnChart(document.getElementById('grafican1'));
             chart.draw(data, options);
         }
@@ -58,10 +71,10 @@ class AliadosController{
         function drawChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
+            data.addColumn('number', 'Peso');
             data.addRows(".$grafic2.");
-            var options = {'title':'Grafica del servicio hotelero - Camas','width':320,'height':240};
-            var chart = new google.visualization.PieChart(document.getElementById('grafican2'));
+            var options = {'title':'Comparacion de peso canal','width':320,'height':240};
+            var chart = new google.visualization.ColumnChart(document.getElementById('grafican2'));
             chart.draw(data, options);
         }
         </script>";
@@ -71,14 +84,14 @@ class AliadosController{
         function drawChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
+            data.addColumn('number', 'Peso');
             data.addRows(".$grafic3.");
-            var options = {'title':'Grafica del servicio hotelero - Empleados','width':320,'height':240};
-            var chart = new google.visualization.PieChart(document.getElementById('grafican3'));
+            var options = {'title':'Comparacion de peso piel','width':320,'height':240};
+            var chart = new google.visualization.ColumnChart(document.getElementById('grafican3'));
             chart.draw(data, options);
         }
-        </script>";*/
-        
+        </script>";
+        */
         require_once 'view/footer.php';
     }
 }

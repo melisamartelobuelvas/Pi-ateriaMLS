@@ -13,20 +13,20 @@
     <?php endif; ?>
     <div class="login">
         <div class="head">
-            <h4>Combustible</h4>
+            <h4>Farmacia</h4>
         </div>
-        <h5>Comparar precios</h5>
+        <h5>Comparar unidades</h5>
         <form action="/aliados/comparar/" method="post" class='buscar'>
                 <select name="aliado1">
-                    <option value="">Aliando...</option>
+                    <option value="">Medicamento...</option>
                     <?php foreach($dato as $r): ?>
-                        <option value="<?php echo $r->nombrecomercial ?>"><?php echo $r->nombrecomercial ?></option>
+                        <option value="<?php echo $r->idmedi ?>"><?php echo $r->nombre ?></option>
                     <?php endforeach; ?>
                 </select>
                 <select name="aliado2">
-                    <option value="">Aliando...</option>
+                    <option value="">Medicamento...</option>
                     <?php foreach($dato as $r): ?>
-                        <option value="<?php echo $r->nombrecomercial ?>"><?php echo $r->nombrecomercial ?></option>
+                        <option value="<?php echo $r->idmedi ?>"><?php echo $r->nombre ?></option>
                     <?php endforeach; ?>
                 </select>
                 <input type="submit" value="Buscar">
@@ -34,22 +34,20 @@
         <table class="table table-bordered mia">
             <thead class="color">
                 <tr>
+                    <th class="sin-borde-abajo">ID</th>
                     <th class="sin-borde-abajo">Nombre</th>
-                    <th class="sin-borde-abajo">Marca</th>
-                    <th class="sin-borde-abajo">Producto</th>
-                    <th class="sin-borde-abajo">Precio</th>
-                    <th class="sin-borde-abajo">Direccion</th>
+                    <th class="sin-borde-abajo">Modalidad</th>
+                    <th class="sin-borde-abajo">Unidades</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php foreach($dato as $r): ?>
                     <tr>
-                            <td><?php echo $r->nombrecomercial ?></td>
-                            <td><?php echo $r->bandera ?></td>
-                            <td><?php echo $r->producto ?></td>	
-                            <td><?php echo $r->precio ?></td>
-                            <td><?php echo $r->direccion ?></td>
+                            <td><?php echo $r->idmedi ?></td>
+                            <td><?php echo $r->nombre ?></td>
+                            <td><?php echo $r->modoapli ?></td>
+                            <td><?php echo $r->unidades ?></td>
                     </tr>
                     </tr>
                 <?php endforeach; ?>
